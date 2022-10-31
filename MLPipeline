@@ -1,0 +1,18 @@
+'''
+ML Pipeline Preparation
+Follow the instructions below to help you create your ML pipeline.
+
+1. Import libraries and load data from database.
+Import Python libraries
+Load dataset from database with read_sql_table
+Define feature and target variables X and Y
+'''
+# import libraries
+import pandas as pd
+from sqlalchemy import create_engine
+
+# load data from database
+engine = create_engine('sqlite:///data/DisasterResponse.db')
+df = pd.read_sql_table('DisasterResponse.db', engine)
+X = df['message']
+Y = df.drop(['id', 'message', 'original', 'genre'], axis = 1) 
